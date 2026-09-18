@@ -1,0 +1,436 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const viberHref = 'viber://chat?number=%2B359876997754';
+
+const glass =
+	'bg-white/5 backdrop-blur-md border border-[#FBEDFF]/15 rounded-3xl p-6 shadow-xl hover:border-[#FBEDFF]/40 transition-all duration-300';
+
+const categories = [
+	{
+		href: '/bouquets',
+		label: 'Букети',
+		copy: 'Авторски букети за подарък, празник и всекидневна красота.',
+		image: 'images/ляво - букети.JPG',
+		alt: 'Букет от слънчогледи, хризантеми и евкалипт - Art & Flowers',
+		variant: 'tall',
+	},
+	{
+		href: '/events',
+		label: 'Украса за събития',
+		copy: 'Сватби, тържества и пространства, облечени в сезонно цвете.',
+		image: 'images/Украса за събития.jpg',
+		alt: 'Церемониална арка с балони, крила и зеленина - Art & Flowers',
+		variant: 'shift',
+	},
+	{
+		href: '/arrangements',
+		label: 'Аранжировки',
+		copy: 'Кутии, кошници и композиции за масата и дома.',
+		image: '/images/IMG_0181.JPG',
+		alt: 'Цветна кошница с рози, еустома и гипсофила - Art & Flowers',
+		variant: 'badge',
+	},
+];
+
+const services = [
+	{
+		title: 'Национална доставка',
+		copy: 'Национална доставка с Еконт и Спиди',
+		icon: 'truck',
+	},
+	{
+		title: 'Безплатна доставка',
+		copy: 'Безплатна доставка при по-големи поръчки.',
+		icon: 'gift',
+	},
+	{
+		title: 'Изненади',
+		copy: 'Персонализирани изненади: доставка на букет директно до ваш близък',
+		icon: 'heart',
+	},
+];
+
+const care = [
+	{
+		title: 'Подрязване',
+		copy: 'Подрязвайте дръжките под ъгъл 45° на всеки 2 дни.',
+	},
+	{
+		title: 'Свежа вода',
+		copy: 'Сменяйте водата ежедневно и я дръжте хладка.',
+	},
+	{
+		title: 'Светлина',
+		copy: 'Пазете букета от пряка слънчева светлина и течение.',
+	},
+];
+
+const reviews = [
+	{
+		name: 'Magi Kamenova',
+		text: 'Любимото ми място за цветя и подаръци- винаги ми изработват уникален букет по мой вкус, а обслужването е 10/10. Ако искате да зарадвате свой близък- това е мястото!',
+	},
+	{
+		name: 'Iliyan',
+		text: 'Страхотен магазин, оригинални идеи за подаръци, букети с прекрасни детайли. Горещо препоръчвам!',
+	},
+	{
+		name: 'Теодора Пройчева',
+		text: 'Страхотен избор на цветя и отлично обслужване. Букетите са модерни и стилни, а доставката беше точна и професионална. Любимият ми магазин за цветя в града!',
+	},
+];
+
+const addons = [
+	{ name: 'card', label: 'Ръчно изписана картичка' },
+	{ name: 'chocolates', label: 'Кутия бонбони' },
+	{ name: 'vase', label: 'Стъклена ваза' },
+	{ name: 'balloon', label: 'Балон с хелий' },
+];
+
+const fieldClass =
+	'min-h-11 w-full border-0 border-b border-[#FBEDFF]/70 bg-transparent p-3 text-base text-white outline-none transition placeholder:text-white/80 focus:border-[#FBEDFF] sm:p-4 [color-scheme:dark]';
+---
+
+<Layout title="Art & Flowers — Бутикови цветя и декорация, Пловдив">
+	<section class="relative px-4 pt-24 pb-12 text-center sm:px-6 md:py-24 md:pt-32 md:text-left lg:px-8">
+		<div
+			class="pointer-events-none absolute top-28 right-4 z-20 hidden size-36 sm:block lg:top-36 lg:right-10 lg:size-40"
+			aria-hidden="true"
+		>
+		</div>
+
+		<div class="relative mx-auto max-w-5xl">
+			<div
+				class="overflow-hidden rounded-t-[100px] border border-[#FBEDFF]/30 md:rounded-t-[160px]"
+			>
+				<img
+					src="/images/IMG_9847.jpeg"
+					alt="Букет от червени рози пред магазина Art & Flowers"
+					width="1600"
+					height="1000"
+					class="aspect-[4/5] w-full object-cover sm:aspect-[16/10]"
+				/>
+			</div>
+
+			<div
+				class="relative z-10 mx-auto -mt-12 -mb-8 max-w-2xl rounded-3xl border border-[#FBEDFF]/15 bg-white/5 p-6 text-center shadow-2xl backdrop-blur-md sm:-mt-24 sm:-mb-12 sm:p-10 md:text-left"
+			>
+				<p class="mb-4 text-[0.7rem] font-medium tracking-[0.35em] text-[#FBEDFF] uppercase">
+					Пловдив
+				</p>
+				<h1
+					class="font-serif text-2xl leading-[1.15] font-medium tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl"
+				>
+					Бутикови цветя &amp; Декорация за вашите специални моменти
+				</h1>
+				<p class="mt-6 text-base leading-relaxed font-light text-white/95 sm:text-lg">
+					Артистични букети, сватбени декорации и персонални аранжировки в гр. Пловдив.
+				</p>
+				<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
+					<a
+						href="/bouquets"
+						class="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FBEDFF] px-6 py-3 text-sm tracking-[0.16em] text-[#503270] uppercase transition duration-500 hover:bg-white sm:w-auto"
+					>
+						Разгледай букети
+					</a>
+					<a
+						href={viberHref}
+						class="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[#FBEDFF] px-6 py-3 text-sm tracking-[0.16em] text-[#FBEDFF] uppercase transition duration-500 hover:bg-[#FBEDFF] hover:text-[#503270] sm:w-auto"
+					>
+						Бърза поръчка
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="pointer-events-none leading-[0]" aria-hidden="true">
+		<svg viewBox="0 0 1440 80" class="w-full" preserveAspectRatio="none">
+			<path
+				fill="currentColor"
+				class="text-[#FBEDFF]/5"
+				d="M0,48 C320,8 640,88 960,40 C1200,8 1320,56 1440,32 L1440,80 L0,80 Z"></path>
+		</svg>
+	</div>
+
+	<section id="categories" class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+		<div class="mb-16 text-center">
+			<h2 class="font-serif text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl">Категории</h2>
+		</div>
+		<div class="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+			{
+				categories.map((category) => (
+					<article
+						class:list={[
+							glass,
+							'group relative flex flex-col',
+							category.variant === 'shift' && 'md:translate-y-8',
+						]}
+					>
+						{category.variant === 'badge' && (
+							<span class="absolute -top-3 -right-2 z-10 rotate-6 rounded-full border border-[#FBEDFF]/40 bg-[#503270] px-3 py-1 text-[0.6rem] tracking-[0.2em] text-[#FBEDFF] uppercase">
+								Atelier
+							</span>
+						)}
+						<div class="overflow-hidden rounded-t-[80px] border border-[#FBEDFF]/20">
+							<img
+								src={category.image}
+								alt={category.alt}
+								width="900"
+								height="1100"
+								loading="eager"
+								decoding="async"
+							class:list={[
+									'w-full object-cover transition duration-700 ease-out group-hover:scale-105',
+									category.variant === 'tall' && 'aspect-[4/5] lg:aspect-[3/5]',
+									category.variant === 'shift' && 'aspect-[4/5] md:aspect-[5/4]',
+									category.variant === 'badge' && 'aspect-[4/5]',
+								]}
+							/>
+						</div>
+						<div class:list={[category.variant === 'badge' ? 'mt-5 px-0' : 'mt-6']}>
+							<h3 class="font-serif text-2xl">{category.label}</h3>
+							<p class="mt-2 flex-1 text-sm leading-relaxed font-light text-white/90">
+								{category.copy}
+							</p>
+							<a
+								href={category.href}
+								class="mt-6 inline-flex min-h-11 w-fit items-center rounded-full bg-[#FBEDFF] px-6 py-3 text-[0.7rem] tracking-[0.18em] text-[#503270] uppercase transition duration-500 hover:bg-white"
+							>
+								Разгледай
+							</a>
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<div class="pointer-events-none leading-[0]" aria-hidden="true">
+		<svg viewBox="0 0 1440 80" class="w-full" preserveAspectRatio="none">
+			<path
+				fill="currentColor"
+				class="text-[#FBEDFF]/5"
+				d="M0,24 C280,72 560,0 840,40 C1120,80 1280,16 1440,48 L1440,80 L0,80 Z"></path>
+		</svg>
+	</div>
+
+	<section id="services" class="relative">
+		<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+			<h2 class="font-serif mb-10 text-center text-2xl sm:text-4xl md:text-5xl">Услуги и Доставка</h2>
+			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+				{
+					services.map((item) => (
+						<article class={`${glass} text-center md:even:translate-y-6`}>
+							<div class="mx-auto mb-5 flex h-12 w-12 items-center justify-center text-[#FBEDFF]">
+								{item.icon === 'truck' && (
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										class="h-8 w-8"
+										aria-hidden="true"
+									>
+										<path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z" />
+										<circle cx="7" cy="17" r="1.5" />
+										<circle cx="18" cy="17" r="1.5" />
+									</svg>
+								)}
+								{item.icon === 'gift' && (
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										class="h-8 w-8"
+										aria-hidden="true"
+									>
+										<rect x="4" y="10" width="16" height="10" />
+										<path d="M12 10v10M4 14h16M12 10c-2-3-5-3-5-1s1.5 2 5 1c3.5 1 5 0 5-1s-3-2-5 1z" />
+									</svg>
+								)}
+								{item.icon === 'heart' && (
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="1.5"
+										class="h-8 w-8"
+										aria-hidden="true"
+									>
+										<path d="M12 20s-7-4.5-7-9.5C5 7.5 7.5 6 9.5 6c1.3 0 2.5.7 2.5 2 0-1.3 1.2-2 2.5-2 2 0 4.5 1.5 4.5 4.5C19 15.5 12 20 12 20z" />
+									</svg>
+								)}
+							</div>
+							<h3 class="font-serif text-xl text-[#FBEDFF]">{item.title}</h3>
+							<p class="mt-3 text-sm leading-relaxed font-light text-white/95">{item.copy}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+		<h2 class="font-serif mb-12 text-center text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+			Грижа за вашите цветя
+		</h2>
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+			{
+				care.map((item) => (
+					<article class={`${glass} md:even:translate-y-6`}>
+						<h3 class="font-serif text-2xl text-[#FBEDFF]">{item.title}</h3>
+						<p class="mt-4 leading-relaxed font-light text-white/95">{item.copy}</p>
+					</article>
+				))
+			}
+		</div>
+	</section>
+
+	<div class="pointer-events-none leading-[0]" aria-hidden="true">
+		<svg viewBox="0 0 1440 80" class="w-full" preserveAspectRatio="none">
+			<path
+				fill="currentColor"
+				class="text-[#FBEDFF]/5"
+				d="M0,40 C360,80 720,0 1080,48 C1260,72 1380,24 1440,36 L1440,80 L0,80 Z"></path>
+		</svg>
+	</div>
+
+	<section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-16 lg:px-8">
+		<div class="mb-12 text-center">
+			<h2 class="font-serif text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+				Какво казват нашите клиенти
+			</h2>
+		
+		</div>
+		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+			{
+				reviews.map((review) => (
+					<blockquote class="flex flex-col justify-between rounded-3xl border border-[#FBEDFF]/15 bg-white/5 p-6 shadow-xl backdrop-blur-md md:even:translate-y-6">
+						<div>
+							<div class="flex items-start justify-between gap-3">
+								<p class="text-lg tracking-wide text-[#FBEDFF] drop-shadow-[0_0_8px_rgba(251,237,255,0.65)]" aria-label="5 звезди">
+									★★★★★
+								</p>
+								<span class="shrink-0 rounded-full border border-[#FBEDFF]/30 bg-[#FBEDFF]/10 px-2.5 py-0.5 text-[0.65rem] tracking-wide text-[#FBEDFF]">
+									в Google
+								</span>
+							</div>
+							<p class="mt-4 leading-relaxed font-light text-white/95">„{review.text}“</p>
+						</div>
+						<footer class="mt-6 text-sm font-semibold tracking-wide text-[#FBEDFF]">
+							— {review.name}
+						</footer>
+					</blockquote>
+				))
+			}
+		</div>
+		<div class="mt-12 text-center">
+			<a
+				href="https://www.google.com/search?sca_esv=6ef35d26f12f2531&sxsrf=APpeQnumhh9H52VI2DphxVxIMWOmrTACqg:1788512549315&q=art+and+flowers&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_w26luLQ8erBVR-ylsviEPKGfCmIjkavmIenGd4l3FTmDHGVSKi2c1iRMVrKOEJoGk2R3pM%3D"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex min-h-11 items-center justify-center rounded-full bg-[#FBEDFF] px-6 py-3 text-sm font-semibold text-[#503270] transition-all hover:scale-105"
+			>
+				Вижте всички отзиви в Google
+			</a>
+		</div>
+	</section>
+
+	<section id="inquiry-form" class="px-4 py-8 pb-32 sm:px-6 sm:py-16 md:px-8 sm:pb-28">
+		<div
+			class="mx-auto max-w-2xl rounded-3xl border border-[#FBEDFF]/15 bg-white/5 p-5 shadow-2xl backdrop-blur-md sm:p-8"
+		>
+			<div class="mb-10 text-center">
+				<h2 class="font-serif text-2xl font-medium tracking-tight text-balance sm:text-4xl md:text-5xl">
+					Запитване за събитие
+				</h2>
+			</div>
+
+			<form
+				name="inquiry"
+				method="POST"
+				data-netlify="true"
+				netlify-honeypot="bot-field"
+				class="grid grid-cols-1 gap-4 md:grid-cols-2"
+			>
+				<input type="hidden" name="form-name" value="inquiry" />
+				<p class="hidden md:col-span-2">
+					<label>
+						Не попълвайте това поле: <input name="bot-field" />
+					</label>
+				</p>
+
+				<label class="block">
+					<span class="mb-2 block text-[0.7rem] tracking-[0.22em] text-[#FBEDFF] uppercase">Име</span>
+					<input
+						type="text"
+						name="name"
+						required
+						autocomplete="name"
+						class={fieldClass}
+						placeholder="Вашето име"
+					/>
+				</label>
+				<label class="block">
+					<span class="mb-2 block text-[0.7rem] tracking-[0.22em] text-[#FBEDFF] uppercase"
+						>Телефон</span
+					>
+					<input
+						type="tel"
+						name="phone"
+						required
+						autocomplete="tel"
+						class={fieldClass}
+						placeholder="08…"
+					/>
+				</label>
+				<label class="block">
+					<span class="mb-2 block text-[0.7rem] tracking-[0.22em] text-[#FBEDFF] uppercase"
+						>Имейл</span
+					>
+					<input
+						type="email"
+						name="email"
+						required
+						autocomplete="email"
+						class={fieldClass}
+						placeholder="имейл@пример.bg"
+					/>
+				</label>
+				<label class="block">
+					<span class="mb-2 block text-[0.7rem] tracking-[0.22em] text-[#FBEDFF] uppercase"
+						>Дата за доставка / събитие</span
+					>
+					<input type="date" name="date" required class={fieldClass} />
+				</label>
+
+				<label class="block md:col-span-2">
+					<span class="mb-2 block text-[0.7rem] tracking-[0.22em] text-[#FBEDFF] uppercase"
+						>Детайли за поръчката / събитието</span
+					>
+					<textarea
+						name="message"
+						rows="5"
+						required
+						class={fieldClass}
+						placeholder="Повод, палитра, адрес, брой гости…"></textarea>
+				</label>
+
+				<div class="md:col-span-2">
+					<button
+						type="submit"
+						class="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FBEDFF] px-8 py-3 font-semibold text-[#503270] transition-all hover:scale-105 sm:w-auto"
+					>
+						Изпратете запитване
+					</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</Layout>

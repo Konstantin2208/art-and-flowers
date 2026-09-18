@@ -1,0 +1,145 @@
+---
+import GalleryGrid from '../components/GalleryGrid.astro';
+import Layout from '../layouts/Layout.astro';
+
+const glass =
+	'bg-white/5 backdrop-blur-md border border-[#FBEDFF]/15 rounded-3xl p-6 shadow-xl hover:border-[#FBEDFF]/40 transition-all duration-300';
+
+const packages = [
+	{
+		name: 'Пакет Минималистичен',
+		image: 'images/минималистичен пакет.JPG',
+		alt: 'Минималистична арка с бели и златни балони - Art & Flowers',
+		includes: [
+			'Букет за булката и бутониера',
+			'Две композиции за церемониалната маса',
+			'Деликатни маркери за пътеката',
+		],
+	},
+	{
+		name: 'Пакет Елеганс',
+		image: 'images/пакет елеганс.JPG',
+		alt: 'Елегантна маса със свещи, тюл и цветни центрове - Art & Flowers',
+		includes: [
+			'Церемониална арка или входна инсталация',
+			'Гирлянди и центрове за гостните маси',
+			'Маса за младоженците в пълен образ',
+		],
+	},
+	{
+		name: 'Премиум Бордо',
+		image: 'images/премиум пакет.jpg',
+		alt: 'Пищна церемониална арка с балони, крила и зеленина - Art & Flowers',
+		includes: [
+			'Пълен флорален дизайн на деня',
+			'Висящи инсталации и пътека',
+			'Персонална палитра и стилистичен надзор',
+		],
+	},
+];
+
+const items = [
+	{
+		title: 'Церемониална арка',
+		alt: 'Кръщелна арка с оранжеви балони, крила и сладка маса - Art & Flowers',
+		image: '/images/20240909_130709.jpg',
+	},
+	{
+		title: 'Вечерна трапеза',
+		alt: 'Вечерна маса със свещи в стъкло и флорални центрове - Art & Flowers',
+		image: '/images/41CE0A7E-283E-4045-BEA9-5D33E0BDEAAE.JPG',
+	},
+	{
+		title: 'Приемна маса',
+		alt: 'Сватбена трапеза с гирлянд от бели рози и евкалипт - Art & Flowers',
+		image: '/images/IMG-5679cd219c6d3323c7dcc10f4653f572-V.jpg',
+	},
+	{
+		title: 'Балонна гирлянда',
+		alt: 'Розова балонна гирлянда за рожден ден - Art & Flowers',
+		image: '/images/20240713_121232.jpg',
+	},
+	{
+		title: 'Златна инсталация',
+		alt: 'Балонна инсталация с мече, бели и златни балони - Art & Flowers',
+		image: '/images/20241116_110416.jpg',
+	},
+	{
+		title: 'Тематична украса',
+		alt: 'Украса за кръщене с мече в балонна композиция - Art & Flowers',
+		image: '/images/20231111_111629.jpg',
+	},
+];
+---
+
+<Layout
+	title="Украса за събития — Art & Flowers"
+	description="Церемониални арки, маси и флорален дизайн за сватби и тържества в Пловдив."
+>
+	<section class="relative px-4 pt-24 pb-10 text-center sm:px-6 md:px-8 md:pt-32 md:pb-14">
+		<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+			<div
+				class="absolute top-20 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[#FBEDFF]/15 blur-3xl"
+			>
+			</div>
+		</div>
+		<h1 class="font-serif text-2xl font-medium tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl">
+			Украса за събития
+		</h1>
+		<p class="mx-auto mt-8 max-w-lg text-base leading-relaxed font-light text-white/95 sm:text-lg">
+			Пространства, композирани като пейзаж — арки, пътеки и маси в сезонно цвете за часовете,
+			които имат значение.
+		</p>
+	</section>
+
+	<section id="packages" class="mx-auto max-w-6xl px-4 py-8 sm:px-6 md:px-8 sm:py-12">
+		<div class="mb-14 text-center">
+			<h2 class="font-serif mt-3 text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+				Сватбени пакети
+			</h2>
+		</div>
+
+		<div class="grid grid-cols-1 items-start gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+			{
+				packages.map((pkg) => (
+					<article class={`${glass} md:even:translate-y-6`}>
+						<div class="overflow-hidden rounded-t-[80px] border border-[#FBEDFF]/20">
+							<img
+								src={pkg.image}
+								alt={pkg.alt}
+								width="900"
+								height="1100"
+								loading="lazy"
+								class="aspect-[4/5] w-full object-cover"
+							/>
+						</div>
+						<h3 class="font-serif mt-5 text-2xl text-white">{pkg.name}</h3>
+						<ul class="mt-4 space-y-2 text-sm leading-relaxed font-light text-white/90">
+							{pkg.includes.map((line) => (
+								<li class="flex gap-2">
+									<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FBEDFF]" />
+									{line}
+								</li>
+							))}
+						</ul>
+						<a
+							href="/#inquiry-form"
+							class="js-inquiry-btn mt-6 inline-flex items-center justify-center rounded-full bg-[#FBEDFF] py-2.5 px-6 text-sm font-semibold text-[#503270] hover:scale-105 transition-all"
+						>
+							Запитване за цена
+						</a>
+					</article>
+				))
+			}
+		</div>
+
+		
+	</section>
+
+	<section class="mx-auto max-w-6xl px-4 pb-28 sm:px-6 md:px-8 md:pb-24">
+		<p class="mb-10 text-center text-[0.7rem] font-medium tracking-[0.35em] text-[#FBEDFF] uppercase">
+			Други украси
+		</p>
+		<GalleryGrid items={items} />
+	</section>
+</Layout>
