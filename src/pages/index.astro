@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const viberHref = 'viber://chat?number=%2B359876997754';
-
 const glass =
 	'bg-white/5 backdrop-blur-md border border-[#FBEDFF]/15 rounded-3xl p-6 shadow-xl hover:border-[#FBEDFF]/40 transition-all duration-300';
 
@@ -10,7 +8,7 @@ const categories = [
 	{
 		href: '/bouquets',
 		label: 'Букети',
-		copy: 'Авторски букети за подарък, празник и всекидневна красота.',
+		copy: 'Уникални авторски букети с пресни сезонни и екзотични цветя по индивидуално запитване.',
 		image: '/images/left bouquet.JPG',
 		alt: 'Букет от слънчогледи, хризантеми и евкалипт - Art & Flowers',
 		variant: 'tall',
@@ -18,7 +16,7 @@ const categories = [
 	{
 		href: '/events',
 		label: 'Украса за събития',
-		copy: 'Сватби, тържества и пространства, облечени в сезонно цвете.',
+		copy: 'Цялостна сватбена флористика, арки и декорация за събития в Пловдив и региона.',
 		image: '/images/events.jpg',
 		alt: 'Церемониална арка с балони, крила и зеленина - Art & Flowers',
 		variant: 'shift',
@@ -26,7 +24,7 @@ const categories = [
 	{
 		href: '/arrangements',
 		label: 'Аранжировки',
-		copy: 'Кутии, кошници и композиции за масата и дома.',
+		copy: 'Луксозни цветя в кутия, кошници и елегантни аранжировки с бутиков дизайн.',
 		image: '/images/IMG_0181.JPG',
 		alt: 'Цветна кошница с рози, еустома и гипсофила - Art & Flowers',
 		variant: 'badge',
@@ -94,7 +92,10 @@ const fieldClass =
 const formSuccess = Astro.url.searchParams.get('success') === 'true';
 ---
 
-<Layout title="Art & Flowers — Бутикови цветя и декорация, Пловдив">
+<Layout
+	title="Art & Flowers | Бутиков магазин за цветя и сватбена флористика Пловдив"
+	description="Елегантни авторски букети, луксозни цветя в кутия и цялостна сватбена украса в Пловдив. Индивидуален дизайн и бързо запитване за цена през Viber или онлайн."
+>
 	<section class="relative px-4 pt-24 pb-12 text-center sm:px-6 md:py-24 md:pt-32 md:text-left lg:px-8">
 		<div
 			class="pointer-events-none absolute top-28 right-4 z-20 hidden size-36 sm:block lg:top-36 lg:right-10 lg:size-40"
@@ -118,29 +119,21 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 			<div
 				class="relative z-10 mx-auto -mt-12 -mb-8 max-w-2xl rounded-3xl border border-[#FBEDFF]/15 bg-white/5 p-6 text-center shadow-2xl backdrop-blur-md sm:-mt-24 sm:-mb-12 sm:p-10 md:text-left"
 			>
-				<p class="mb-4 text-[0.7rem] font-medium tracking-[0.35em] text-[#FBEDFF] uppercase">
-					Пловдив
-				</p>
+				
 				<h1
 					class="font-serif text-2xl leading-[1.15] font-medium tracking-tight text-balance sm:text-4xl md:text-5xl lg:text-6xl"
 				>
-					Бутикови цветя &amp; Декорация за вашите специални моменти
+					Поезия от свежи цветя и бутиков дизайн в Пловдив
 				</h1>
 				<p class="mt-6 text-base leading-relaxed font-light text-white/95 sm:text-lg">
-					Артистични букети, сватбени декорации и персонални аранжировки в гр. Пловдив.
+					Създаваме авторски букети, луксозни аранжировки и цялостна флорална украса за вашите най-специални моменти.
 				</p>
-				<div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
+				<div class="mt-8 flex items-center justify-center md:justify-start">
 					<a
-						href="/bouquets"
-						class="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FBEDFF] px-6 py-3 text-sm tracking-[0.16em] text-[#503270] uppercase transition duration-500 hover:bg-white sm:w-auto"
+						href="/#inquiry-form"
+						class="js-inquiry-btn btn w-full sm:w-auto"
 					>
-						Разгледай букети
-					</a>
-					<a
-						href={viberHref}
-						class="inline-flex min-h-11 w-full items-center justify-center rounded-full border border-[#FBEDFF] px-6 py-3 text-sm tracking-[0.16em] text-[#FBEDFF] uppercase transition duration-500 hover:bg-[#FBEDFF] hover:text-[#503270] sm:w-auto"
-					>
-						Бърза поръчка
+						Изпрати запитване
 					</a>
 				</div>
 			</div>
@@ -156,6 +149,15 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 		</svg>
 	</div>
 
+	<section id="about" class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
+		<h2 class="font-serif text-2xl font-medium tracking-tight text-balance sm:text-4xl md:text-5xl">
+			Изкуството да подаряваш емоция
+		</h2>
+		<p class="mt-8 text-base leading-relaxed font-light text-white/95 sm:text-lg">
+			В Art & Flowers Пловдив вярваме, че цветята са повече от подарък – те са послание. Всеки наш авторски букет и флорална композиция се изработва с прецизност, внимание към детайла и с най-свеже подбраните рязани цветя. Без значение дали търсите изискана изненада за рожден ден, луксозна кутия с цветя или цялостна концепция за сватбена украса в Пловдив, ние превръщаме Вашите идеи в реалност.
+		</p>
+	</section>
+
 	<section id="categories" class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
 		<div class="mb-16 text-center">
 			<h2 class="font-serif text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl">Категории</h2>
@@ -170,11 +172,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 							category.variant === 'shift' && 'md:translate-y-8',
 						]}
 					>
-						{category.variant === 'badge' && (
-							<span class="absolute -top-3 -right-2 z-10 rotate-6 rounded-full border border-[#FBEDFF]/40 bg-[#503270] px-3 py-1 text-[0.6rem] tracking-[0.2em] text-[#FBEDFF] uppercase">
-								Atelier
-							</span>
-						)}
+						
 						<div class="overflow-hidden rounded-t-[80px] border border-[#FBEDFF]/20">
 							<img
 								src={category.image}
@@ -198,7 +196,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 							</p>
 							<a
 								href={category.href}
-								class="mt-6 inline-flex min-h-11 w-fit items-center rounded-full bg-[#FBEDFF] px-6 py-3 text-[0.7rem] tracking-[0.18em] text-[#503270] uppercase transition duration-500 hover:bg-white"
+								class="btn mt-6 w-fit"
 							>
 								Разгледай
 							</a>
@@ -220,7 +218,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 
 	<section id="services" class="relative">
 		<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-			<h2 class="font-serif mb-10 text-center text-2xl sm:text-4xl md:text-5xl">Услуги и Доставка</h2>
+			<h2 class="font-serif mb-10 text-center text-2xl sm:text-4xl md:text-5xl"></h2>
 			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 				{
 					services.map((item) => (
@@ -337,7 +335,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 				href="https://www.google.com/search?sca_esv=6ef35d26f12f2531&sxsrf=APpeQnumhh9H52VI2DphxVxIMWOmrTACqg:1788512549315&q=art+and+flowers&si=APenkKm7iecQ4G6P-TsbSMFKIQtv3EFIqRAFw-i8uEbk55Z-_w26luLQ8erBVR-ylsviEPKGfCmIjkavmIenGd4l3FTmDHGVSKi2c1iRMVrKOEJoGk2R3pM%3D"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="inline-flex min-h-11 items-center justify-center rounded-full bg-[#FBEDFF] px-6 py-3 text-sm font-semibold text-[#503270] transition-all hover:scale-105"
+				class="btn"
 			>
 				Вижте всички отзиви в Google
 			</a>
@@ -436,7 +434,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 				<div class="md:col-span-2">
 					<button
 						type="submit"
-						class="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[#FBEDFF] px-8 py-3 font-semibold text-[#503270] transition-all hover:scale-105 sm:w-auto"
+						class="btn w-full sm:w-auto"
 					>
 						Изпратете запитване
 					</button>

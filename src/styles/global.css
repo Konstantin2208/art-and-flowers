@@ -7,6 +7,12 @@
   --color-lilac: #fbedff;
 }
 
+@layer components {
+  .btn {
+    @apply inline-flex min-h-11 items-center justify-center rounded-full bg-[#FBEDFF] px-6 py-2.5 text-center font-sans text-sm font-semibold normal-case tracking-normal text-[#503270] no-underline transition-all hover:scale-105;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .seal-spin {
     animation: none !important;

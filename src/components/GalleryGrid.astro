@@ -10,36 +10,40 @@ interface Props {
 	items: Item[];
 }
 
-const {
-	items,
-} = Astro.props;
+const { items } = Astro.props;
 
 const cardClass =
-	'group bg-white/5 backdrop-blur-md border border-[#FBEDFF]/15 rounded-3xl p-6 shadow-xl hover:border-[#FBEDFF]/40 hover:scale-[1.02] transition-all duration-300 md:even:translate-y-6';
+	'group flex h-full flex-col justify-between bg-white/5 backdrop-blur-md border border-[#FBEDFF]/15 rounded-3xl p-6 shadow-xl hover:border-[#FBEDFF]/40 hover:scale-[1.02] transition-all duration-300';
 
 const ctaClass =
-	'js-inquiry-btn mt-6 inline-flex items-center justify-center rounded-full bg-[#FBEDFF] py-2.5 px-6 text-sm font-semibold text-[#503270] hover:scale-105 transition-all';
+	'js-inquiry-btn btn mt-auto w-full';
 ---
 
 <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 	{
 		items.map((item, index) => (
 			<article class={cardClass}>
-				<div class="overflow-hidden rounded-t-[80px] border border-[#FBEDFF]/20">
-					<img
-						src={item.image}
-						alt={item.alt}
-						width="900"
-						height="1100"
-						loading={index < 3 ? 'eager' : 'lazy'}
-						decoding="async"
-						class="aspect-[4/5] w-full object-cover transition duration-700 ease-out group-hover:scale-105"
-					/>
+				<div class="flex flex-grow flex-col">
+					<div class="overflow-hidden">
+						<img
+							src={item.image}
+							alt={item.alt}
+							width="900"
+							height="675"
+							loading={index < 3 ? 'eager' : 'lazy'}
+							decoding="async"
+							class="aspect-[4/3] w-full rounded-t-[30px] object-cover transition duration-700 ease-out group-hover:scale-105 md:rounded-t-[40px]"
+						/>
+					</div>
+					<h3 class="font-serif mt-5 text-xl text-white">{item.title}</h3>
+					{item.copy ? (
+						<p class="mt-3 flex-grow text-sm leading-relaxed font-light text-white/90">{item.copy}</p>
+					) : (
+						<div class="flex-grow" />
+					)}
 				</div>
-				<h2 class="font-serif mt-5 text-xl text-white">{item.title}</h2>
-				{item.copy && <p class="mt-3 text-sm leading-relaxed font-light text-white/90">{item.copy}</p>}
 				<a href="/#inquiry-form" class={ctaClass}>
-					Запитване за цена
+					Запитване
 				</a>
 			</article>
 		))
