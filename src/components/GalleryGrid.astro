@@ -24,7 +24,7 @@ const ctaClass =
 		items.map((item, index) => (
 			<article class={cardClass}>
 				<div class="flex flex-grow flex-col">
-					<div class="overflow-hidden">
+					<div class="overflow-hidden rounded-t-[30px] md:rounded-t-[40px]">
 						<img
 							src={item.image}
 							alt={item.alt}
@@ -32,7 +32,7 @@ const ctaClass =
 							height="675"
 							loading={index < 3 ? 'eager' : 'lazy'}
 							decoding="async"
-							class="aspect-[4/3] w-full rounded-t-[30px] object-cover transition duration-700 ease-out group-hover:scale-105 md:rounded-t-[40px]"
+							class="h-auto w-full object-contain"
 						/>
 					</div>
 					<h3 class="font-serif mt-5 text-xl text-white">{item.title}</h3>

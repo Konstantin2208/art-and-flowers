@@ -96,23 +96,23 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 	title="Art & Flowers | Бутиков магазин за цветя и сватбена флористика Пловдив"
 	description="Елегантни авторски букети, луксозни цветя в кутия и цялостна сватбена украса в Пловдив. Индивидуален дизайн и бързо запитване за цена през Viber или онлайн."
 >
-	<section class="relative px-4 pt-24 pb-12 text-center sm:px-6 md:py-24 md:pt-32 md:text-left lg:px-8">
+	<section class="relative px-3 pt-24 pb-12 text-center sm:px-4 md:py-24 md:pt-32 md:text-left lg:px-5">
 		<div
 			class="pointer-events-none absolute top-28 right-4 z-20 hidden size-36 sm:block lg:top-36 lg:right-10 lg:size-40"
 			aria-hidden="true"
 		>
 		</div>
 
-		<div class="relative mx-auto max-w-5xl">
+		<div class="relative mx-auto max-w-7xl">
 			<div
 				class="overflow-hidden rounded-t-[100px] border border-[#FBEDFF]/30 md:rounded-t-[160px]"
 			>
 				<img
-					src="/images/IMG_9847.jpeg"
-					alt="Букет от червени рози пред магазина Art & Flowers"
-					width="1600"
-					height="1000"
-					class="aspect-[4/5] w-full object-cover sm:aspect-[16/10]"
+					src="/images/IMG_0329-hero.jpeg"
+					alt="Плътна композиция от божури в кремаво, розово и виолетово - Art & Flowers"
+					width="1308"
+					height="736"
+					class="h-auto w-full object-contain"
 				/>
 			</div>
 
@@ -149,7 +149,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 		</svg>
 	</div>
 
-	<section id="about" class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:px-8">
+	<section id="about" class="mx-auto max-w-3xl px-3 py-16 text-center sm:px-4 sm:py-20 lg:px-5">
 		<h2 class="font-serif text-2xl font-medium tracking-tight text-balance sm:text-4xl md:text-5xl">
 			Изкуството да подаряваш емоция
 		</h2>
@@ -158,7 +158,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 		</p>
 	</section>
 
-	<section id="categories" class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+	<section id="categories" class="mx-auto max-w-7xl px-3 py-16 sm:px-4 sm:py-24 lg:px-5">
 		<div class="mb-16 text-center">
 			<h2 class="font-serif text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl">Категории</h2>
 		</div>
@@ -181,12 +181,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 								height="1100"
 								loading="eager"
 								decoding="async"
-							class:list={[
-									'w-full object-cover transition duration-700 ease-out group-hover:scale-105',
-									category.variant === 'tall' && 'aspect-[4/5] lg:aspect-[3/5]',
-									category.variant === 'shift' && 'aspect-[4/5] md:aspect-[5/4]',
-									category.variant === 'badge' && 'aspect-[4/5]',
-								]}
+								class="h-auto w-full object-contain"
 							/>
 						</div>
 						<div class:list={[category.variant === 'badge' ? 'mt-5 px-0' : 'mt-6']}>
@@ -217,7 +212,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 	</div>
 
 	<section id="services" class="relative">
-		<div class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+		<div class="mx-auto max-w-7xl px-3 py-12 sm:px-4 sm:py-16 lg:px-5">
 			<h2 class="font-serif mb-10 text-center text-2xl sm:text-4xl md:text-5xl"></h2>
 			<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
 				{
@@ -276,7 +271,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 		</div>
 	</section>
 
-	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
+	<section class="mx-auto max-w-7xl px-3 py-16 sm:px-4 sm:py-24 lg:px-5">
 		<h2 class="font-serif mb-12 text-center text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl">
 			Грижа за вашите цветя
 		</h2>
@@ -301,7 +296,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 		</svg>
 	</div>
 
-	<section class="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-16 lg:px-8">
+	<section class="mx-auto max-w-7xl px-3 py-8 sm:px-4 sm:py-16 lg:px-5">
 		<div class="mb-12 text-center">
 			<h2 class="font-serif text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
 				Какво казват нашите клиенти
@@ -342,7 +337,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 		</div>
 	</section>
 
-	<section id="inquiry-form" class="px-4 py-8 pb-32 sm:px-6 sm:py-16 md:px-8 sm:pb-28">
+	<section id="inquiry-form" class="px-3 py-8 pb-32 sm:px-4 sm:py-16 lg:px-5 sm:pb-28">
 		<div
 			class="mx-auto max-w-2xl rounded-3xl border border-[#FBEDFF]/15 bg-white/5 p-5 shadow-2xl backdrop-blur-md sm:p-8"
 		>
