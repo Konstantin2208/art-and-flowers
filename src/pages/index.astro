@@ -347,17 +347,6 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 				</h2>
 			</div>
 
-			{
-				formSuccess && (
-					<p
-						class="mb-8 rounded-2xl border border-[#FBEDFF]/40 bg-[#FBEDFF]/10 px-4 py-3 text-center text-sm text-[#FBEDFF]"
-						role="status"
-					>
-						Запитването е изпратено. Ще се свържем с вас скоро.
-					</p>
-				)
-			}
-
 			<form
 				name="inquiry"
 				method="POST"
@@ -365,7 +354,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 				enctype="multipart/form-data"
 				data-netlify="true"
 				data-netlify-honeypot="bot-field"
-				class="grid grid-cols-1 gap-4 md:grid-cols-2"
+				class:list={['grid grid-cols-1 gap-4 md:grid-cols-2', formSuccess && 'hidden']}
 			>
 				<input type="hidden" name="form-name" value="inquiry" />
 				<input type="hidden" name="bot-field" />
@@ -466,6 +455,8 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 					/>
 				</div>
 
+				<p id="form-error-message" class="hidden text-sm text-[#FBEDFF] md:col-span-2" role="alert"></p>
+
 				<div class="md:col-span-2">
 					<button
 						type="submit"
@@ -475,9 +466,43 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 					</button>
 				</div>
 			</form>
+
+			<div
+				id="form-success-message"
+				class:list={[
+					'rounded-[25px] border border-[#FBEDFF]/20 bg-[#3D2556]/80 px-6 py-12 text-center backdrop-blur-md',
+					!formSuccess && 'hidden',
+				]}
+				role="status"
+				aria-live="polite"
+			>
+				<div
+					class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FBEDFF]/20 text-[#FBEDFF]"
+				>
+					<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M5 13l4 4L19 7"></path>
+					</svg>
+				</div>
+				<h3 class="mb-2 font-serif text-2xl text-white">Благодарим Ви!</h3>
+				<p class="mx-auto mb-6 max-w-md text-sm text-[#FBEDFF]/80">
+					Вашето запитване беше изпратено успешно. Ще се свържем с Вас във възможно най-кратък срок!
+				</p>
+				<button id="reset-form-btn" type="button" class="btn">Изпратете ново запитване</button>
+			</div>
+
 			<script>
 				const fileInput = document.getElementById('file-upload');
 				const fileStatus = document.getElementById('file-upload-status');
+
+				const resetFileStatus = () => {
+					if (!fileStatus) return;
+					fileStatus.textContent = 'Качване';
+					fileStatus.removeAttribute('title');
+				};
 
 				if (fileInput instanceof HTMLInputElement && fileStatus) {
 					fileInput.addEventListener('change', () => {
@@ -485,8 +510,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 						const count = files?.length ?? 0;
 
 						if (count === 0) {
-							fileStatus.textContent = 'Качване';
-							fileStatus.removeAttribute('title');
+							resetFileStatus();
 							return;
 						}
 
@@ -500,6 +524,59 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 						fileStatus.removeAttribute('title');
 					});
 				}
+
+				const inquiryForm = document.querySelector('form[name="inquiry"]');
+				const successMessage = document.getElementById('form-success-message');
+				const errorMessage = document.getElementById('form-error-message');
+				const resetButton = document.getElementById('reset-form-btn');
+
+				const showSuccess = () => {
+					errorMessage?.classList.add('hidden');
+					inquiryForm?.classList.add('hidden');
+					successMessage?.classList.remove('hidden');
+				};
+
+				if (inquiryForm instanceof HTMLFormElement) {
+					inquiryForm.addEventListener('submit', async (event) => {
+						event.preventDefault();
+						const submitButton = inquiryForm.querySelector('button[type="submit"]');
+						if (submitButton instanceof HTMLButtonElement) submitButton.disabled = true;
+						if (errorMessage) {
+							errorMessage.textContent = '';
+							errorMessage.classList.add('hidden');
+						}
+
+						try {
+							const response = await fetch('/', {
+								method: 'POST',
+								body: new FormData(inquiryForm),
+							});
+
+							if (!response.ok) {
+								throw new Error('Inquiry form was not accepted');
+							}
+
+							showSuccess();
+						} catch {
+							if (errorMessage) {
+								errorMessage.textContent =
+									'Запитването не беше изпратено. Опитайте отново или ни пишете във Viber.';
+								errorMessage.classList.remove('hidden');
+							}
+						} finally {
+							if (submitButton instanceof HTMLButtonElement) submitButton.disabled = false;
+						}
+					});
+				}
+
+				resetButton?.addEventListener('click', () => {
+					if (inquiryForm instanceof HTMLFormElement) inquiryForm.reset();
+					resetFileStatus();
+					successMessage?.classList.add('hidden');
+					inquiryForm?.classList.remove('hidden');
+					const nameField = inquiryForm?.querySelector('input[name="name"]');
+					if (nameField instanceof HTMLInputElement) nameField.focus();
+				});
 			</script>
 		</div>
 	</section>
