@@ -88,8 +88,6 @@ const addons = [
 
 const fieldClass =
 	'min-h-11 w-full border-0 border-b border-[#FBEDFF]/70 bg-transparent p-3 text-base text-white outline-none transition placeholder:text-white/80 focus:border-[#FBEDFF] sm:p-4 [color-scheme:dark]';
-
-const formSuccess = Astro.url.searchParams.get('success') === 'true';
 ---
 
 <Layout
@@ -350,12 +348,11 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 			<form
 				name="inquiry"
 				method="POST"
-				action="/?success=true#inquiry-form"
 				enctype="multipart/form-data"
 				data-netlify="true"
 				netlify-honeypot="bot-field"
 				data-netlify-honeypot="bot-field"
-				class:list={['grid grid-cols-1 gap-4 md:grid-cols-2', formSuccess && 'hidden']}
+				class="grid grid-cols-1 gap-4 md:grid-cols-2"
 			>
 				<input type="hidden" name="form-name" value="inquiry" />
 				<p class="hidden">
@@ -467,125 +464,6 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 					</button>
 				</div>
 			</form>
-
-			<div
-				id="form-success-message"
-				class:list={[
-					'rounded-[25px] border border-[#FBEDFF]/20 bg-[#3D2556]/80 px-6 py-12 text-center backdrop-blur-md',
-					!formSuccess && 'hidden',
-				]}
-				role="status"
-				aria-live="polite"
-			>
-				<div
-					class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FBEDFF]/20 text-[#FBEDFF]"
-				>
-					<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M5 13l4 4L19 7"></path>
-					</svg>
-				</div>
-				<h3 class="mb-2 font-serif text-2xl text-white">Благодарим Ви!</h3>
-				<p class="mx-auto mb-6 max-w-md text-sm text-[#FBEDFF]/80">
-					Вашето запитване беше изпратено успешно. Ще се свържем с Вас във възможно най-кратък срок!
-				</p>
-				<button id="reset-form-btn" type="button" class="btn">Изпратете ново запитване</button>
-			</div>
-
-			<script>
-				const fileInput = document.getElementById('file-upload');
-				const fileStatus = document.getElementById('file-upload-status');
-
-				const resetFileStatus = () => {
-					if (!fileStatus) return;
-					fileStatus.textContent = 'Качване';
-					fileStatus.removeAttribute('title');
-				};
-
-				if (fileInput instanceof HTMLInputElement && fileStatus) {
-					fileInput.addEventListener('change', () => {
-						const files = fileInput.files;
-						const count = files?.length ?? 0;
-
-						if (count === 0) {
-							resetFileStatus();
-							return;
-						}
-
-						if (count === 1 && files?.[0]) {
-							fileStatus.textContent = files[0].name;
-							fileStatus.title = files[0].name;
-							return;
-						}
-
-						fileStatus.textContent = `${count} избрани снимки`;
-						fileStatus.removeAttribute('title');
-					});
-				}
-
-				const inquiryForm = document.querySelector('form[name="inquiry"]');
-				const successMessage = document.getElementById('form-success-message');
-				const resetButton = document.getElementById('reset-form-btn');
-
-				if (inquiryForm instanceof HTMLFormElement) {
-					inquiryForm.addEventListener('submit', async (event) => {
-						event.preventDefault();
-						const submitBtn = inquiryForm.querySelector('button[type="submit"]');
-						if (!(submitBtn instanceof HTMLButtonElement)) return;
-
-						const originalBtnText = submitBtn.innerText;
-						submitBtn.disabled = true;
-						submitBtn.innerText = 'Изпращане...';
-
-						const formData = new FormData(inquiryForm);
-						if (!formData.get('form-name')) {
-							formData.append('form-name', 'inquiry');
-						}
-
-						const attachedFiles = formData.getAll('inspiration_images');
-						const hasRealFile = attachedFiles.some(
-							(file) => file instanceof File && file.size > 0 && file.name !== '',
-						);
-						if (!hasRealFile) formData.delete('inspiration_images');
-
-						try {
-							const response = await fetch('/', {
-								method: 'POST',
-								body: formData,
-							});
-
-							if (response.ok) {
-								inquiryForm.classList.add('hidden');
-								successMessage?.classList.remove('hidden');
-								inquiryForm.reset();
-								resetFileStatus();
-							} else {
-								throw new Error('Form submission failed');
-							}
-						} catch (error) {
-							console.error('Submission error:', error);
-							alert(
-								'Възникна грешка при изпращането. Моля, свържете се с нас директно по телефон или Viber!',
-							);
-						} finally {
-							submitBtn.disabled = false;
-							submitBtn.innerText = originalBtnText;
-						}
-					});
-				}
-
-				resetButton?.addEventListener('click', () => {
-					if (inquiryForm instanceof HTMLFormElement) inquiryForm.reset();
-					resetFileStatus();
-					successMessage?.classList.add('hidden');
-					inquiryForm?.classList.remove('hidden');
-					const nameField = inquiryForm?.querySelector('input[name="name"]');
-					if (nameField instanceof HTMLInputElement) nameField.focus();
-				});
-			</script>
 		</div>
 	</section>
 </Layout>
