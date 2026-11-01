@@ -348,6 +348,7 @@ const fieldClass =
 			<form
 				name="inquiry"
 				method="POST"
+				action="/?success=true#inquiry-form"
 				enctype="multipart/form-data"
 				data-netlify="true"
 				netlify-honeypot="bot-field"
@@ -417,15 +418,11 @@ const fieldClass =
 				</label>
 
 				<div class="md:col-span-2">
-					<label
-						for="file-upload"
-						class="mb-2 block font-serif text-sm font-medium text-[#FBEDFF]"
-					>
+					<p class="mb-2 font-serif text-sm font-medium text-[#FBEDFF]">
 						Прикачете снимки за вдъхновение
-					</label>
+					</p>
 					<label
-						for="file-upload"
-						class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-[#FBEDFF]/30 bg-[#FBEDFF]/10 px-5 py-2.5 text-sm font-medium text-[#FBEDFF] transition-all hover:bg-[#FBEDFF]/20"
+						class="relative inline-flex cursor-pointer items-center gap-2 rounded-full border border-[#FBEDFF]/30 bg-[#FBEDFF]/10 px-5 py-2.5 text-sm font-medium text-[#FBEDFF] transition-all hover:bg-[#FBEDFF]/20"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -437,22 +434,23 @@ const fieldClass =
 							stroke-width="1.75"
 							stroke-linecap="round"
 							stroke-linejoin="round"
+							class="pointer-events-none"
 							aria-hidden="true"
 						>
 							<path
 								d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 17.93 8.8l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"
 							></path>
 						</svg>
-						<span id="file-upload-status" class="max-w-[16rem] truncate">Качване</span>
+						<span id="file-upload-status" class="pointer-events-none max-w-[16rem] truncate">Качване</span>
+						<input
+							type="file"
+							name="inspiration_images"
+							accept="image/*"
+							multiple
+							class="absolute inset-0 z-10 h-full w-full cursor-pointer opacity-0"
+							id="file-upload"
+						/>
 					</label>
-					<input
-						type="file"
-						name="inspiration_images"
-						accept="image/*"
-						multiple
-						class="hidden"
-						id="file-upload"
-					/>
 				</div>
 
 				<div class="md:col-span-2">
@@ -464,6 +462,80 @@ const fieldClass =
 					</button>
 				</div>
 			</form>
+
+			<div
+				id="form-success-message"
+				class="hidden rounded-[25px] border border-[#FBEDFF]/20 bg-[#3D2556]/80 px-6 py-12 text-center backdrop-blur-md"
+				role="status"
+			>
+				<div
+					class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FBEDFF]/20 text-[#FBEDFF]"
+				>
+					<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M5 13l4 4L19 7"></path>
+					</svg>
+				</div>
+				<h3 class="mb-2 font-serif text-2xl text-white">Благодарим Ви!</h3>
+				<p class="mx-auto mb-6 max-w-md text-sm text-[#FBEDFF]/80">
+					Вашето запитване беше изпратено успешно. Ще се свържем с Вас във възможно най-кратък срок!
+				</p>
+				<a href="/#inquiry-form" class="btn" id="new-inquiry">Изпратете ново запитване</a>
+			</div>
+
+			<script>
+				const inquiryForm = document.querySelector('form[name="inquiry"]');
+				const successMessage = document.getElementById('form-success-message');
+				const newInquiry = document.getElementById('new-inquiry');
+
+				if (new URLSearchParams(window.location.search).get('success') === 'true') {
+					inquiryForm?.classList.add('hidden');
+					successMessage?.classList.remove('hidden');
+				}
+
+				newInquiry?.addEventListener('click', (event) => {
+					event.preventDefault();
+					const url = new URL(window.location.href);
+					url.searchParams.delete('success');
+					url.hash = 'inquiry-form';
+					history.replaceState(null, '', url);
+					if (inquiryForm instanceof HTMLFormElement) inquiryForm.reset();
+					inquiryForm?.classList.remove('hidden');
+					successMessage?.classList.add('hidden');
+					const fileStatus = document.getElementById('file-upload-status');
+					if (fileStatus) {
+						fileStatus.textContent = 'Качване';
+						fileStatus.removeAttribute('title');
+					}
+				});
+
+				const fileInput = document.getElementById('file-upload');
+				const fileStatus = document.getElementById('file-upload-status');
+
+				if (fileInput instanceof HTMLInputElement && fileStatus) {
+					fileInput.addEventListener('change', () => {
+						const files = [...(fileInput.files ?? [])];
+
+						if (files.length === 0) {
+							fileStatus.textContent = 'Качване';
+							fileStatus.removeAttribute('title');
+							return;
+						}
+
+						if (files.length === 1) {
+							fileStatus.textContent = files[0].name;
+							fileStatus.title = files[0].name;
+							return;
+						}
+
+						fileStatus.textContent = `${files.length} избрани снимки`;
+						fileStatus.removeAttribute('title');
+					});
+				}
+			</script>
 		</div>
 	</section>
 </Layout>
