@@ -2,51 +2,76 @@
 import GalleryGrid from '../components/GalleryGrid.astro';
 import Layout from '../layouts/Layout.astro';
 
-const glass =
-	'flex h-full flex-col justify-between bg-white/5 backdrop-blur-md border border-[#FBEDFF]/15 rounded-3xl p-6 shadow-xl hover:border-[#FBEDFF]/40 transition-all duration-300';
-
-const services = [
-	{
-		name: 'Сватбена украса',
-		image: '/images/minimalistic.JPG',
-		alt: 'Сватбена флорална украса и церемониална арка - Art & Flowers Пловдив',
-		copy: 'Булчински букети, арки за изнесен брак, украса на маси, бутониери и цветни аранжировки за автомобил.',
-	},
-	{
-		name: 'Корпоративни събития',
-		image: '/images/elegans.JPG',
-		alt: 'Стилна флорална декорация за корпоративно събитие - Art & Flowers Пловдив',
-		copy: 'Стилна декорация за брандинг събития, гала вечери, откриване на обекти и официални вечери.',
-	},
-	{
-		name: 'Лични празници',
-		image: '/images/premium.jpg',
-		alt: 'Тематична цветна украса за личен празник - Art & Flowers Пловдив',
-		copy: 'Тематична украса от цветя за юбилей, кръщене, моминско парти и специални изненади.',
-	},
-];
-
 const items = [
 	{
-		title: 'Церемониална арка',
-		copy: 'Флорална арка за изнесен брак, кръщене и фотосесия — индивидуален проект според палитрата на събитието.',
-		alt: 'Церемониална арка с цветя и балони - Art & Flowers Пловдив',
-		image: '/images/20240909_130709.jpg',
+		title: 'Приемна маса',
+		copy: 'Дълга трапеза с непрекъснат флорален гирлянд от бели рози и зеленина. За сватбен прием и официална вечеря.',
+		alt: 'Дълга сватбена трапеза с гирлянд от бели рози и зеленина - Art & Flowers Пловдив',
+		image: '/images/IMG-7face7e02d7267bb70bebd8f39b41eb3-V.jpg',
+	},
+	
+	
+	{
+		title: 'Свещи в стъкло',
+		copy: 'Високи стъклени вази с плаващи свещи и цветна аранжировка във вечерна светлина. За романтична сватбена маса.',
+		alt: 'Вечерна маса с плаващи свещи в стъклени вази и цветя - Art & Flowers Пловдив',
+		image: '/images/91757F24-6008-4D64-9346-90C52902219C.JPG',
 	},
 	{
-		title: 'Тематична украса',
-		copy: 'Цялостна концепция за кръщене и детски празник с цветя, балони и сладка маса.',
-		alt: 'Тематична украса за кръщене - Art & Flowers Пловдив',
+		title: 'Златна изненада',
+		copy: 'Бял и златен балонен облак с мече, цифра едно и табела. Празнична фотозона за първи рожден ден.',
+		alt: 'Бяла и златна балонна украса за първи рожден ден - Art & Flowers Пловдив',
+		image: '/images/20241116_110416.jpg',
+	},
+	{
+		title: 'Облак за кръщене',
+		copy: 'Бял и бежов балонен облак с мече в кошница и табела за свето кръщене. Нежна фотозона за детски празник.',
+		alt: 'Украса за кръщене с балонен облак и мече в кошница - Art & Flowers Пловдив',
 		image: '/images/20231111_111629.jpg',
 	},
-	
 	{
-		title: 'Приемна маса',
-		copy: 'Гирлянди от бели рози и евкалипт за сватбена трапеза и официална декорация в Пловдив.',
-		alt: 'Сватбена трапеза с гирлянд от бели рози и евкалипт - Art & Flowers Пловдив',
-		image: '/images/IMG-5679cd219c6d3323c7dcc10f4653f572-V.jpg',
+		title: 'Първи рожден ден',
+		copy: 'Органична арка в розово и пудра с цифра едно и поздравителна табела. Украса за първи рожден ден.',
+		alt: 'Розова балонна арка с цифра едно за първи рожден ден - Art & Flowers Пловдив',
+		image: '/images/20240713_121232.jpg',
+	},
+	{
+		title: 'Детски фотокът',
+		copy: 'Тематичен фотокът с розови и зелени балони и малки цветни акценти. За детски рожден ден и фотосесия.',
+		alt: 'Детски фотокът с пастелни балони и цветни акценти - Art & Flowers Пловдив',
+		image: '/images/20240824_211459.jpg',
+	},
+	{
+		title: 'Арка с крила',
+		copy: 'Кръгла арка с бели крила, прасковени балони и сладка маса. Цялостна украса за свето кръщене.',
+		alt: 'Арка за кръщене с бели крила, прасковени балони и торта - Art & Flowers Пловдив',
+		image: '/images/20240909_130709.jpg',
 	},
 	
+	{
+		title: 'Цветен център',
+		copy: 'Ниска композиция с гербери, карамфили и делфиниум, свещ и перлена нишка. Акцент за масата на гостите.',
+		alt: 'Цветна композиция за маса с гербери, карамфили и свещ - Art & Flowers Пловдив',
+		image: '/images/468E428B-96F8-4E71-BCA1-C497F127A7FA.JPG',
+	},
+	{
+		title: 'Бял гирлянд',
+		copy: 'Гирлянд от бели рози, гипсофила и евкалипт със свещи в стъкло. За сватбена трапеза и официална вечеря.',
+		alt: 'Сватбен гирлянд от бели рози, гипсофила и евкалипт - Art & Flowers Пловдив',
+		image: '/images/events.jpg',
+	},
+	{
+		title: 'Бяло и злато',
+		copy: 'Арка с бели крила, бяло-златни балони и цифра едно. Украса за кръщене и първи рожден ден.',
+		alt: 'Бяло-златна арка с крила и балони за кръщене - Art & Flowers Пловдив',
+		image: '/images/Gemini_Generated_Image_nzqcetnzqcetnzqc.jpg',
+	},
+	{
+		title: 'Розово кръщене',
+		copy: 'Розова балонна арка, тюл и кръгла рамка с бели крила. Фотокът за свето кръщене.',
+		alt: 'Розова украса за кръщене с балонна арка, тюл и бели крила - Art & Flowers Пловдив',
+		image: '/images/IMG_0188.jpeg',
+	},
 	
 	
 ];
@@ -69,43 +94,6 @@ const items = [
 		<p class="mx-auto mt-8 max-w-3xl text-base leading-relaxed font-light text-white/95 sm:text-lg">
 			Превръщаме Вашето събитие в незабравима приказка. Проектираме и изграждаме цялостни флорални концепции за сватби, корпоративни партита, лични празници и фотосесии в Пловдив и региона.
 		</p>
-	</section>
-
-	<section id="packages" class="mx-auto max-w-7xl px-3 py-8 sm:px-4 lg:px-5 sm:py-12">
-		<div class="mb-14 text-center">
-			<h2 class="font-serif mt-3 text-2xl font-medium tracking-tight sm:text-4xl md:text-5xl">
-				Услуги за събития
-			</h2>
-		</div>
-
-		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
-			{
-				services.map((svc) => (
-					<article class={glass}>
-						<div class="flex flex-grow flex-col">
-							<div class="overflow-hidden rounded-t-[30px] md:rounded-t-[40px]">
-								<img
-									src={svc.image}
-									alt={svc.alt}
-									width="900"
-									height="675"
-									loading="lazy"
-									class="h-auto w-full object-contain"
-								/>
-							</div>
-							<h3 class="font-serif mt-5 text-2xl text-white">{svc.name}</h3>
-							<p class="mt-4 flex-grow text-sm leading-relaxed font-light text-white/90">{svc.copy}</p>
-						</div>
-						<a
-							href="/#inquiry-form"
-							class="js-inquiry-btn btn mt-auto w-full"
-						>
-							Запитване 
-						</a>
-					</article>
-				))
-			}
-		</div>
 	</section>
 
 	<section class="mx-auto max-w-7xl px-3 pb-28 sm:px-4 lg:px-5 md:pb-24">

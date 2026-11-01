@@ -34,7 +34,7 @@ const categories = [
 const services = [
 	{
 		title: 'Национална доставка',
-		copy: 'Национална доставка с Еконт и Спиди',
+		copy: 'Национална доставка с Еконт',
 		icon: 'truck',
 	},
 	{
@@ -154,7 +154,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 			Изкуството да подаряваш емоция
 		</h2>
 		<p class="mt-8 text-base leading-relaxed font-light text-white/95 sm:text-lg">
-			В Art & Flowers Пловдив вярваме, че цветята са повече от подарък – те са послание. Всеки наш авторски букет и флорална композиция се изработва с прецизност, внимание към детайла и с най-свеже подбраните рязани цветя. Без значение дали търсите изискана изненада за рожден ден, луксозна кутия с цветя или цялостна концепция за сватбена украса в Пловдив, ние превръщаме Вашите идеи в реалност.
+			В Art & Flowers Пловдив вярваме, че цветята са повече от подарък – те са послание. Всеки наш авторски букет и флорална композиция се изработва с прецизност, внимание към детайла и с най-свежо подбраните рязани цветя. Без значение дали търсите изискана изненада за рожден ден, луксозна кутия с цветя или цялостна концепция за сватбена украса в Пловдив, ние превръщаме Вашите идеи в реалност.
 		</p>
 	</section>
 
@@ -362,6 +362,7 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 				name="inquiry"
 				method="POST"
 				action="/?success=true#inquiry-form"
+				enctype="multipart/form-data"
 				data-netlify="true"
 				data-netlify-honeypot="bot-field"
 				class="grid grid-cols-1 gap-4 md:grid-cols-2"
@@ -427,6 +428,45 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 				</label>
 
 				<div class="md:col-span-2">
+					<label
+						for="file-upload"
+						class="mb-2 block font-serif text-sm font-medium text-[#FBEDFF]"
+					>
+						Прикачете снимки за вдъхновение
+					</label>
+					<label
+						for="file-upload"
+						class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-[#FBEDFF]/30 bg-[#FBEDFF]/10 px-5 py-2.5 text-sm font-medium text-[#FBEDFF] transition-all hover:bg-[#FBEDFF]/20"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="18"
+							height="18"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.75"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+						>
+							<path
+								d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 17.93 8.8l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"
+							></path>
+						</svg>
+						<span id="file-upload-status" class="max-w-[16rem] truncate">Качване</span>
+					</label>
+					<input
+						type="file"
+						name="inspiration_images"
+						accept="image/*"
+						multiple
+						class="hidden"
+						id="file-upload"
+					/>
+				</div>
+
+				<div class="md:col-span-2">
 					<button
 						type="submit"
 						class="btn w-full sm:w-auto"
@@ -435,6 +475,32 @@ const formSuccess = Astro.url.searchParams.get('success') === 'true';
 					</button>
 				</div>
 			</form>
+			<script>
+				const fileInput = document.getElementById('file-upload');
+				const fileStatus = document.getElementById('file-upload-status');
+
+				if (fileInput instanceof HTMLInputElement && fileStatus) {
+					fileInput.addEventListener('change', () => {
+						const files = fileInput.files;
+						const count = files?.length ?? 0;
+
+						if (count === 0) {
+							fileStatus.textContent = 'Качване';
+							fileStatus.removeAttribute('title');
+							return;
+						}
+
+						if (count === 1 && files?.[0]) {
+							fileStatus.textContent = files[0].name;
+							fileStatus.title = files[0].name;
+							return;
+						}
+
+						fileStatus.textContent = `${count} избрани снимки`;
+						fileStatus.removeAttribute('title');
+					});
+				}
+			</script>
 		</div>
 	</section>
 </Layout>
