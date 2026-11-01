@@ -348,7 +348,7 @@ const fieldClass =
 			<form
 				name="inquiry"
 				method="POST"
-				action="/?success=true#inquiry-form"
+				action="/#inquiry-form"
 				enctype="multipart/form-data"
 				data-netlify="true"
 				netlify-honeypot="bot-field"
@@ -463,55 +463,7 @@ const fieldClass =
 				</div>
 			</form>
 
-			<div
-				id="form-success-message"
-				class="hidden rounded-[25px] border border-[#FBEDFF]/20 bg-[#3D2556]/80 px-6 py-12 text-center backdrop-blur-md"
-				role="status"
-			>
-				<div
-					class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FBEDFF]/20 text-[#FBEDFF]"
-				>
-					<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M5 13l4 4L19 7"></path>
-					</svg>
-				</div>
-				<h3 class="mb-2 font-serif text-2xl text-white">Благодарим Ви!</h3>
-				<p class="mx-auto mb-6 max-w-md text-sm text-[#FBEDFF]/80">
-					Вашето запитване беше изпратено успешно. Ще се свържем с Вас във възможно най-кратък срок!
-				</p>
-				<a href="/#inquiry-form" class="btn" id="new-inquiry">Изпратете ново запитване</a>
-			</div>
-
 			<script>
-				const inquiryForm = document.querySelector('form[name="inquiry"]');
-				const successMessage = document.getElementById('form-success-message');
-				const newInquiry = document.getElementById('new-inquiry');
-
-				if (new URLSearchParams(window.location.search).get('success') === 'true') {
-					inquiryForm?.classList.add('hidden');
-					successMessage?.classList.remove('hidden');
-				}
-
-				newInquiry?.addEventListener('click', (event) => {
-					event.preventDefault();
-					const url = new URL(window.location.href);
-					url.searchParams.delete('success');
-					url.hash = 'inquiry-form';
-					history.replaceState(null, '', url);
-					if (inquiryForm instanceof HTMLFormElement) inquiryForm.reset();
-					inquiryForm?.classList.remove('hidden');
-					successMessage?.classList.add('hidden');
-					const fileStatus = document.getElementById('file-upload-status');
-					if (fileStatus) {
-						fileStatus.textContent = 'Качване';
-						fileStatus.removeAttribute('title');
-					}
-				});
-
 				const fileInput = document.getElementById('file-upload');
 				const fileStatus = document.getElementById('file-upload-status');
 
