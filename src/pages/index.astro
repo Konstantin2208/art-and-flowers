@@ -11,6 +11,8 @@ const categories = [
 		copy: 'Уникални авторски букети с пресни сезонни и екзотични цветя по индивидуално запитване.',
 		image: '/images/left bouquet.JPG',
 		alt: 'Букет от слънчогледи, хризантеми и евкалипт - Art & Flowers',
+		width: 1543,
+		height: 2048,
 		variant: 'tall',
 	},
 	{
@@ -19,6 +21,8 @@ const categories = [
 		copy: 'Цялостна сватбена флористика, арки и декорация за събития в Пловдив и региона.',
 		image: '/images/events.jpg',
 		alt: 'Церемониална арка с балони, крила и зеленина - Art & Flowers',
+		width: 1080,
+		height: 1614,
 		variant: 'shift',
 	},
 	{
@@ -27,6 +31,8 @@ const categories = [
 		copy: 'Луксозни цветя в кутия, кошници и елегантни аранжировки с бутиков дизайн.',
 		image: '/images/IMG_0181.JPG',
 		alt: 'Цветна кошница с рози, еустома и гипсофила - Art & Flowers',
+		width: 1810,
+		height: 2048,
 		variant: 'badge',
 	},
 ];
@@ -180,8 +186,8 @@ const fieldClass =
 							<img
 								src={category.image}
 								alt={category.alt}
-								width="900"
-								height="1100"
+								width={category.width}
+								height={category.height}
 								loading="lazy"
 								decoding="async"
 								class="h-auto w-full object-contain"
