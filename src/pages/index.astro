@@ -106,10 +106,15 @@ const fieldClass =
 				class="overflow-hidden rounded-t-[100px] border border-[#FBEDFF]/30 md:rounded-t-[160px]"
 			>
 				<img
-					src="/images/IMG_0329-hero.jpeg"
+					src="/images/IMG_0329-hero.webp"
+					srcset="/images/IMG_0329-hero-800.webp 800w, /images/IMG_0329-hero.webp 1308w"
+					sizes="(min-width: 1280px) 1280px, 100vw"
 					alt="Плътна композиция от божури в кремаво, розово и виолетово - Art & Flowers"
 					width="1308"
 					height="736"
+					fetchpriority="high"
+					loading="eager"
+					decoding="async"
 					class="h-auto w-full object-contain"
 				/>
 			</div>
@@ -177,7 +182,7 @@ const fieldClass =
 								alt={category.alt}
 								width="900"
 								height="1100"
-								loading="eager"
+								loading="lazy"
 								decoding="async"
 								class="h-auto w-full object-contain"
 							/>
